@@ -1,0 +1,120 @@
+{% block content %}
+<style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    .wrapper {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #333;
+        position: relative;
+    }
+
+    .wrapper_login {
+        position: absolute;
+        width: 400px;
+        height: 550px;
+        background-color: #777;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px;
+        gap: 10px;
+        transition: 1s all ease;
+    }
+
+
+    .wrapper_login::before {
+        position: absolute;
+        content: "";
+        width: 200px;
+        height: 200px;
+        background-color: #09099c;
+        border-radius: 50%;
+        right: -100px;
+        top: -60px;
+        opacity: 0.5;
+    }
+
+    .wrapper_login::after {
+        position: absolute;
+        content: "";
+        width: 200px;
+        height: 200px;
+        background-color: gold;
+        border-radius: 50%;
+        left: -100px;
+        bottom: -90px;
+        opacity: 0.5;
+    }
+
+    .wrapper_login-h1 {
+        color: #fff;
+    }
+
+    .wrapper_login-form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: left;
+        align-items: start;
+        color: #fff;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .wrapper_login-form input {
+        width: 100%;
+        padding: 10px 10px;
+        background-color: transparent;
+        border: 1px solid #fff;
+        outline: none;
+        color: #fff;
+    }
+    .wrapper_login-form-button {
+        padding: 10px 140px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        border-radius: 10px;
+        border: none;
+        font-size: 17px;
+    }
+    .refresh {
+        color: #fff;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="wrapper">
+
+    <div class="wrapper_login">
+        <h1 class="wrapper_login-h1">log in</h1>
+        <form method="post" class="wrapper_login-form">
+            {% csrf_token %}
+            <h3>Email:</h3>
+            <input type="text" class="name" name="username" required>
+            <h3>Password</h3>
+            <input type="password" class="password" name="password" required>
+            <button class="wrapper_login-form-button" type="submit">Submit</button>
+        </form>
+        <a class="refresh" href="http://127.0.0.1:8000/register">Sign in</a>
+    </div>
+</div>
+
+
+
+{% endblock %}

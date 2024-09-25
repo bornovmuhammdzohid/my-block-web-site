@@ -1,0 +1,159 @@
+{% block content %}
+<style>
+    * {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    .wrapper {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #333;
+        position: relative;
+    }
+
+
+    .wrapper_register {
+        position: absolute;
+        width: 400px;
+        height: 600px;
+        background-color: #777;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px;
+        gap: 10px;
+        z-index: 1;
+        transition: 1s all ease;
+    }
+
+
+    .wrapper_register::before {
+        position: absolute;
+        content: "";
+        width: 180px;
+        height: 180px;
+        background-color: #09099c;
+        border-radius: 50%;
+        right: -100px;
+        top: -60px;
+        opacity: 0.5;
+    }
+
+    .wrapper_register::after {
+        position: absolute;
+        content: "";
+        width: 180px;
+        height: 180px;
+        background-color: gold;
+        border-radius: 50%;
+        left: -100px;
+        bottom: -60px;
+        opacity: 0.5;
+    }
+
+    .wrapper_register-h1 {
+        color: #fff;
+    }
+
+    .wrapper_register-form {
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        text-align: left;
+        align-items: start;
+        color: #fff;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .wrapper_register-form input {
+        width: 100%;
+        padding: 10px 10px;
+        background-color: transparent;
+        border: 1px solid #fff;
+        outline: none;
+        color: #fff;
+    }
+    .wrapper_register-form-button {
+        padding: 10px 140px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        border-radius: 10px;
+        border: none;
+        font-size: 17px;
+    }
+
+    .refresh {
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .refresh:hover {
+        text-decoration: underline;
+    }
+
+    .refresh2 {
+        color: #fff;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 80px;
+        cursor: pointer;
+    }
+
+    .refresh2:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="wrapper">
+    <div class="wrapper_register">
+        <h1 class="wrapper_register-h1">Sign up</h1>
+        <form method="post" class="wrapper_register-form">
+            {% csrf_token %}
+            <h3>Name:</h3>
+            <input type="text" class="name" name="username" required>
+            <h3>Firs Name</h3>
+            <input type="text" class="password" name="last_name" required>
+            <h3>Email:</h3>
+            <input type="email" class="name" name="email" required>
+            <h3>Password:</h3>
+            <input type="password" class="name" name="password" required>
+            <button class="wrapper_register-form-button" type="submit">Submit</button>
+        </form>
+        <a href="{% url 'login' %}" class="refresh2">Log in</a>
+    </div>
+</div>
+
+<!-- <script>
+    let login = document.querySelector(".wrapper_login")
+    let register = document.querySelector(".wrapper_register")
+    let get_register = document.querySelector(".refresh")
+    let get_login = document.querySelector(".refresh2")
+
+    get_register.addEventListener("click", () => {
+        login.style.transform = "rotateY(-180deg)"
+        register.style.transform = "rotateY(0deg)"
+        login.style.zIndex = '1'
+        register.style.zIndex = '2'
+        console.log("ishladi");
+    })
+    get_login.addEventListener("click", () => {
+        login.style.transform = "rotateY(0deg)"
+        register.style.transform = "rotateY(180deg)"
+        login.style.zIndex = '2'
+        register.style.zIndex = '1'
+        console.log("ishladi");
+    })
+</script> -->
+
+{% endblock %}
